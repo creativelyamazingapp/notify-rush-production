@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for up-to-date on 2024-10-05T15:54:43+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'up-to-date'
+primary_region = 'syd'
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+ # auto_stop_machines = 'stop'
+ # auto_start_machines = true
+ # min_machines_running = 0
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

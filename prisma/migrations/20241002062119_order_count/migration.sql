@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Customer" ADD COLUMN     "orderCount" INTEGER NOT NULL DEFAULT 0,
+ADD COLUMN     "totalOrderValue" DOUBLE PRECISION NOT NULL DEFAULT 0.0;

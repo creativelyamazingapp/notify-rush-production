@@ -1,0 +1,69 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "96ff2f5380860d9911953963a8a01c3c"
+name = "Notify Rush"
+handle = "notifyrush"
+application_url = "https://hugh-compliance-delivered-steven.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-196d1f56.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "customer_read_customers,customer_read_orders,read_customers,read_locations,read_orders,write_products,read_all_orders,read_fulfillments"
+
+[auth]
+redirect_urls = [
+  "https://hugh-compliance-delivered-steven.trycloudflare.com/auth/callback",
+  "https://hugh-compliance-delivered-steven.trycloudflare.com/auth/shopify/callback",
+  "https://hugh-compliance-delivered-steven.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-07"
+
+  [[webhooks.subscriptions]]
+  uri = "https://up-to-date.fly.dev/webhooks/customers/data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://up-to-date.fly.dev/webhooks/customers/redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://up-to-date.fly.dev/webhooks/shop/redact"
+  compliance_topics = [ "shop/redact" ]
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/create" ]
+  uri = "https://up-to-date.fly.dev/webhooks/app/add_orders"
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/updated" ]
+  uri = "https://up-to-date.fly.dev/webhooks/app/update_orders"
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/fulfilled" ]
+  uri = "https://up-to-date.fly.dev/webhooks/app/fulfillment"
+
+  [[webhooks.subscriptions]]
+  topics = [ "fulfillments/update" ]
+  uri = "https://up-to-date.fly.dev/webhooks/app/fulfillmentUpdate"
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/cancelled" ]
+  uri = "https://up-to-date.fly.dev/webhooks/app/refunds_cancelled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "refunds/create" ]
+  uri = "https://up-to-date.fly.dev/webhooks/app/refunds_create"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "https://up-to-date.fly.dev/webhooks/app/uninstalled"
+
+[pos]
+embedded = false
